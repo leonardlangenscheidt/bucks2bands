@@ -1,0 +1,49 @@
+<div class="container">
+	<h1>Profile</h1>
+	<div class="row">
+		<div class="col-sm-3">
+			<h3>Personal Information</h3>
+			<p><strong>Email:</strong><br>
+			<%=@user.email%></p>
+			<p><strong>Total Votes:</strong><br>
+			<%=@user.upvotes.count%></p>
+			<p><strong>Joined:</strong><br>
+			<%=@user.created_at.strftime("%m/%d/%Y")%></p>
+			<%= link_to 'Sign Out', destroy_user_session_path, :method=>:delete %>
+		</div>
+		<div class="col-sm-9">
+			<h3>Prior Upvotes</h3>
+			<% @upvotes.each do |upvote| %>
+				<h4>Cycle <%= upvote.artist.cycle %></h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Label</th>
+							<th>Genre</th>
+							<th>Bio</th>
+							<th>Upvotes</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @artists.each do |artist| %>
+							<% if artist.cycle == upvote.artist.cycle %>
+								<% if artist != upvote.artist %>
+									<tr style="color:#bbb">
+								<% else %>
+									<tr>
+								<% end %>
+										<td><%= artist.name %></td>
+										<td><%= artist.label %></td>
+										<td><%= artist.genre %></td>
+										<td><%= artist.bio %></td>
+										<td><%= artist.upvotes.count %></td>
+									</tr>
+							<% end %>
+						<% end %>
+					</tbody>
+				</table>
+			<% end %>
+		</div>
+	</div>
+</div>

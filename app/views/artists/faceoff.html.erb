@@ -29,7 +29,7 @@
 					  <%= artist.upvotes.count %>
 					</p>
 					<p></p>
-					<p style="text-align:center"><%= link_to 'Vote', "/artists/#{artist.id}/upvote" %></p>
+					<p style="text-align:center"><%= link_to 'Vote', "/artists/#{artist.id}/upvote", class:"btn btn-primary btn-lg"  %></p>
 				</div>
 			<% end %>
 		<% end %>

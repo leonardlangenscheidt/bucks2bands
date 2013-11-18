@@ -3,6 +3,7 @@ Donator::Application.routes.draw do
   resources :artists
   get 'artists/:id/upvote' => 'artists#upvote'
   get 'faceoff' => 'artists#faceoff'
+  get 'profile' => 'pages#profile'
 
   devise_for :users
 
