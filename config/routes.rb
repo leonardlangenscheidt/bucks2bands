@@ -2,10 +2,11 @@ Donator::Application.routes.draw do
   #artist routes
   resources :artists
   get 'artists/:id/upvote' => 'artists#upvote'
+  get 'faceoff' => 'artists#faceoff'
 
   devise_for :users
 
-  root 'artists#faceoff'
+  root 'pages#landing'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
