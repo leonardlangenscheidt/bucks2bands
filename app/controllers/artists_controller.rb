@@ -64,22 +64,28 @@ class ArtistsController < ApplicationController
 			@user = current_user
 			if @artist.cycle != Artist.last.cycle
 				flash[:notice] = "Sorry. You can only vote for artists in the current matchup."
-				redirect_to artists_path
+				redirect_to root_path
 			elsif @user.upvotes.count >0 && @user.upvotes.last.artist.cycle == @artist.cycle
 				flash[:notice] = "You have already voted for this matchup."
-				redirect_to artists_path
+				redirect_to root_path
 			else
 				@upvote = Upvote.create(
 					:artist_id => @artist.id,
 					:user_id => @user.id
 					)
 				flash[:notice] = "Successfully upvoted"
-				redirect_to artists_path
+				redirect_to root_path
 			end
 		else
 			flash[:notice] = "To vote, sign in."
 			redirect_to new_user_session_path
 		end
+	end
+
+	def faceoff
+		@artists = Artist.all
+		@count = @artists.last.cycle
+		@lastartist = Artist.last
 	end
 
 	private

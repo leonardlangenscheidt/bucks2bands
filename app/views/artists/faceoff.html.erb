@@ -1,0 +1,37 @@
+<h1 style="text-align:center">Faceoff!</h1>
+<div class="container">
+	<div class="row">
+		<% @artists.each do |artist| %>
+			<% if artist.cycle == @count %>
+				<% if artist == @lastartist %>
+					<div class="col-sm-2">
+						<div style="margin-top:150px">
+							<h2 style="text-align:center">VS</h2>
+						</div>
+					</div>
+				<% end %>
+				<div class="col-sm-5">
+					<h2 style="text-align:center"><%= artist.name%></h2>
+					<p>
+					  <strong>Label:</strong>
+					  <%= artist.label %>
+					</p>
+					<p>
+					  <strong>Genre:</strong>
+					  <%= artist.genre %>
+					</p>
+					<p>
+					  <strong>Bio:</strong>
+					  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+					  <strong>Upvotes:</strong>
+					  <%= artist.upvotes.count %>
+					</p>
+					<p></p>
+					<p style="text-align:center"><%= link_to 'Vote', "/artists/#{artist.id}/upvote" %></p>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
