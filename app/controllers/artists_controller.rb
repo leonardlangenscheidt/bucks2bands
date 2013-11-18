@@ -65,7 +65,7 @@ class ArtistsController < ApplicationController
 			if @artist.cycle != Artist.last.cycle
 				flash[:notice] = "Sorry. You can only vote for artists in the current matchup."
 				redirect_to artists_path
-			elsif @user.upvotes && @user.upvotes.last.artist.cycle == @artist.cycle
+			elsif @user.upvotes.count >0 && @user.upvotes.last.artist.cycle == @artist.cycle
 				flash[:notice] = "You have already voted for this matchup."
 				redirect_to artists_path
 			else
