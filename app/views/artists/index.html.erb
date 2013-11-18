@@ -1,0 +1,43 @@
+<% @count.times do |number| %>
+
+	<h1>Cycle <%= @count - number%></h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Vote</th>
+				<th>Name</th>
+				<th>Label</th>
+				<th>Genre</th>
+				<th>Bio</th>
+				<th>Upvotes</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @artists.each do |artist| %>
+				<% if artist.cycle == (@count - number) %>
+					<tr>
+						<td><%= link_to 'Vote', "/artists/#{artist.id}/upvote" %></td>
+						<td><%= artist.name %></td>
+						<td><%= artist.label %></td>
+						<td><%= artist.genre %></td>
+						<td><%= artist.bio %></td>
+						<td><%= artist.upvotes.count %></td>
+						<td><%= link_to 'Show', artist %></td>
+						<td><%= link_to 'Edit', edit_artist_path(artist) %></td>
+						<td><%= link_to 'Destroy', artist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</tbody>
+	</table>
+
+	<br>
+
+<% end %>
+
+<%= link_to 'New Artist', new_artist_path %>
