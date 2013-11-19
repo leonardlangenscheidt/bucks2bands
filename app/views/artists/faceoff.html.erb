@@ -28,8 +28,9 @@
 					  <strong>Upvotes:</strong>
 					  <%= artist.upvotes.count %>
 					</p>
-					<p></p>
+					<p><iframe width="100%" height="166" scrolling="no" frameborder="no" src=<%="#{artist.track}"%>></iframe></p>
 					<p style="text-align:center"><%= link_to 'Vote', "/artists/#{artist.id}/upvote", class:"btn btn-primary btn-lg"  %></p>
+					</iframe>
 				</div>
 			<% end %>
 		<% end %>
