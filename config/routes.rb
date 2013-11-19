@@ -1,6 +1,7 @@
 Donator::Application.routes.draw do
   #artist routes
   resources :artists
+  resources :members
   get 'artists/:id/upvote' => 'artists#upvote'
   get 'faceoff' => 'artists#faceoff'
   get 'profile' => 'pages#profile'
